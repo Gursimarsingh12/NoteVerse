@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.todo.noteverse.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editNoteFragment"
+            app:destination="@id/editNoteFragment">
+<!--            These arguments are setup to send data/variables from 1 fragment to other-->
+            <argument
+                android:name="noteTitle"
+                app:argType="string" />
+            <argument
+                android:name="noteDescription"
+                app:argType="string" />
+            <argument
+                android:name="noteId"
+                app:argType="integer"/>
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.todo.noteverse.fragments.AddNoteFragment"
+        android:label="fragment_add_note"
+        tools:layout="@layout/fragment_add_note" >
+        <action
+            android:id="@+id/action_addNoteFragment_to_homeFragment"
+            app:destination="@id/homeFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/editNoteFragment"
+        android:name="com.todo.noteverse.fragments.EditNoteFragment"
+        android:label="fragment_edit_note"
+        tools:layout="@layout/fragment_edit_note" >
+        <action
+            android:id="@+id/action_editNoteFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            />
+    </fragment>
+</navigation>
